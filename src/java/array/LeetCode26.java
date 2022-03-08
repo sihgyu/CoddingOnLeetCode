@@ -23,7 +23,7 @@ public class LeetCode26 {
             }
             fast++;
         }
-        return slow + 1;
+        return ++slow;
     }
 
     /**

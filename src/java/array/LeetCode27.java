@@ -28,3 +28,15 @@ public class LeetCode27 {
         return slow;
     }
 }
+
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int slow = 0;
+        for (int quick = 0; quick < nums.length; quick++) {
+            if (nums[quick] != val) {
+                nums[slow++] = nums[quick];
+            }
+        }
+        return slow;
+    }
+}
