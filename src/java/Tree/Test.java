@@ -112,6 +112,7 @@ public class Test {
         Stack<TreeNode> stack = new Stack<>();TreeNode cur = treeNode;
         while (!stack.isEmpty() || cur != null) {
             while (cur != null){
+                //
                 stack.push(cur);
                 cur = cur.left;
                 if (cur.right != null){
