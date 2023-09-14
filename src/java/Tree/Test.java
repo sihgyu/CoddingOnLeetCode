@@ -105,23 +105,31 @@ public class Test {
         System.out.print(treeNode.val);
     }
 
+    /**
+     * 后续遍历非递归
+     * @param treeNode node
+     */
     private static void lastOrder2(TreeNode treeNode) {
         if (treeNode == null) {
             return;
         }
-        Stack<TreeNode> stack = new Stack<>();TreeNode cur = treeNode;
-        while (!stack.isEmpty() || cur != null) {
-            while (cur != null){
-                //
-                stack.push(cur);
-                cur = cur.left;
-                if (cur.right != null){
-                    stack.push(cur);
-                }
-            }
+        Stack<TreeNode> stack = new Stack<>();
+        Stack<TreeNode> stack1 = new Stack<>();
+        stack.push(treeNode);
+        // 后续遍历的顺序为 左右跟 前序遍历的顺序为根左右 由此发现 将前序的顺序压入另一个栈输出即可
+        while (!stack.isEmpty()){
             TreeNode node = stack.pop();
+            stack1.push(node);
+            if (node.left!=null){
+                stack.push(node.left);
+            }
+            if (node.right !=null){
+                stack.push(node.right);
+            }
 
-            System.out.print(node.val);
+        }
+        while (!stack1.isEmpty()) {
+            System.out.print(stack1.pop().val);
         }
     }
 
