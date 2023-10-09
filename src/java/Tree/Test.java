@@ -9,13 +9,13 @@ import java.util.Stack;
 public class Test {
 
     /*
-    前序遍历：根结点 ---> 左子树 ---> 右子树
-
-    中序遍历：左子树---> 根结点 ---> 右子树
-
-    后序遍历：左子树 ---> 右子树 ---> 根结点
-
-    层次遍历：只需按层次遍历即可
+     * 前序遍历：根结点 ---> 左子树 ---> 右子树
+     * 
+     * 中序遍历：左子树---> 根结点 ---> 右子树
+     * 
+     * 后序遍历：左子树 ---> 右子树 ---> 根结点
+     * 
+     * 层次遍历：只需按层次遍历即可
      */
 
     /**
@@ -70,6 +70,7 @@ public class Test {
 
     /**
      * 中序非递归
+     * 
      * @param treeNode node
      */
     private static void midOrder2(TreeNode treeNode) {
@@ -107,6 +108,7 @@ public class Test {
 
     /**
      * 后续遍历非递归
+     * 
      * @param treeNode node
      */
     private static void lastOrder2(TreeNode treeNode) {
@@ -116,14 +118,14 @@ public class Test {
         Stack<TreeNode> stack = new Stack<>();
         Stack<TreeNode> stack1 = new Stack<>();
         stack.push(treeNode);
-        // 后续遍历的顺序为 左右跟 前序遍历的顺序为根左右 由此发现 将前序的顺序压入另一个栈输出即可
-        while (!stack.isEmpty()){
+        // 后续遍历的顺序为 左右根 前序遍历的顺序为根左右 由此发现 将前序的顺序压入另一个栈输出即可
+        while (!stack.isEmpty()) {
             TreeNode node = stack.pop();
             stack1.push(node);
-            if (node.left!=null){
+            if (node.left != null) {
                 stack.push(node.left);
             }
-            if (node.right !=null){
+            if (node.right != null) {
                 stack.push(node.right);
             }
 
