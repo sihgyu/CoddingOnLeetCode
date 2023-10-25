@@ -1,6 +1,7 @@
 package Tree;
 
-import java.util.Stack;
+import javax.xml.soap.Node;
+import java.util.*;
 
 /**
  * @author :yusx
@@ -10,11 +11,11 @@ public class Test {
 
     /*
      * 前序遍历：根结点 ---> 左子树 ---> 右子树
-     * 
+     *
      * 中序遍历：左子树---> 根结点 ---> 右子树
-     * 
+     *
      * 后序遍历：左子树 ---> 右子树 ---> 根结点
-     * 
+     *
      * 层次遍历：只需按层次遍历即可
      */
 
@@ -70,7 +71,7 @@ public class Test {
 
     /**
      * 中序非递归
-     * 
+     *
      * @param treeNode node
      */
     private static void midOrder2(TreeNode treeNode) {
@@ -108,7 +109,7 @@ public class Test {
 
     /**
      * 后续遍历非递归
-     * 
+     *
      * @param treeNode node
      */
     private static void lastOrder2(TreeNode treeNode) {
@@ -133,6 +134,50 @@ public class Test {
         while (!stack1.isEmpty()) {
             System.out.print(stack1.pop().val);
         }
+    }
+
+    private static void bfs(TreeNode treeNode) {
+        if (treeNode == null) {
+            return;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(treeNode);
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            System.out.print(node.val);
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+        }
+    }
+
+    private static List<List<String>> bfs2(TreeNode treeNode){
+        if (treeNode == null){
+            return new ArrayList<>();
+        }
+        List<List<String>> res = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(treeNode);
+        while (!queue.isEmpty()){
+            int size = queue.size();
+            List<String> tempList = new ArrayList<>();
+            while (size-- >0){
+                TreeNode node = queue.poll();
+                tempList.add(node.val);
+                if (node.left != null){
+                    queue.add(node.left);
+                }
+                if (node.right != null){
+                    queue.add(node.right);
+                }
+            }
+            res.add(tempList);
+
+        }
+        return res;
     }
 
     public static void main(String[] args) {
@@ -164,5 +209,11 @@ public class Test {
         midOrder2(nodeA);
         System.out.println("\n后序遍历非递归");
         lastOrder2(nodeA);
+        System.out.println("\n层序遍历递归");
+        bfs(nodeA);
+        List<List<String>> lists = bfs2(nodeA);
+        for (List<String> list : lists) {
+            System.out.println(list);
+        }
     }
 }
