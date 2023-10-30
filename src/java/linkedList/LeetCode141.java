@@ -5,6 +5,7 @@ package linkedList;
  * @date : 2023/10/9
  */
 public class LeetCode141 {
+    //  判断链表是否成环
     public boolean hasCycle(ListNode head) {
         if (head == null || head.next == null) {
             return false;

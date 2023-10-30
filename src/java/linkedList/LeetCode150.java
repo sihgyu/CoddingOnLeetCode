@@ -5,6 +5,7 @@ package linkedList;
  * @date : 2023/10/9
  */
 public class LeetCode150 {
+    // 合并链表
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         if (list1 == null) {
             return list2;
